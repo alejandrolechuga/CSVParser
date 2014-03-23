@@ -17,8 +17,7 @@ air, moon roof, loaded",4799.00
 ```javascript
 CSV.parse(csvstring);
 ```
-output
-
+console.log outout
 ```
 Array[6]
 0: Array[6]
