@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <label for="csv">Load CSV File</label>
+    <input type="file" id="csv">
+    <script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
+    <script src="../csvparser.js"></script>
+    <script>
+      (function(){
+        $("#csv").each(function (k, v) {
+          // console.log(v);
+          $(v).change(function(event) {
+            var files = event.target.files;
+            // console.log(files);
+            var f;
+            for (var i = 0, length = files.length; i < length; i++) {
+              f = files[i];
+              var reader = new FileReader();
+              reader.onload = (function(file) {
+                return function (event) {
+                 console.log(CSV.parse(event.target.result));
+                };
+              }(f));
+              reader.readAsText(f);
+            }
+          });
+        });
+      }());
+    </script>
+  </body>
+</html>
